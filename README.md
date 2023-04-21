@@ -1,30 +1,15 @@
 # About
 
-My template for python environment in vscode editor.
+The directory *design_patterns* is a collection of design patterns that I have studied.
 
-# Dependencies
+Each directory inside *design_patterns* has the name of a design pattern and each one contains three files: 
 
-First of all, activate you favorite virtual environment.
+- **README.md**: with information about the design pattern and an example problem.
+- **before.py**: file with the code before applying the design pattern.
+- **after.py** file with the code that incorporates the design pattern to solve the same example problem.
 
-For pre-commit work, install the following libs:
+I had used the followings references:
 
-- [pre-commit](https://pre-commit.com/)
-- [commitizen](https://pypi.org/project/commitizen/)
-- [Black](https://pypi.org/project/black/#:~:text=Black%20is%20the%20uncompromising%20Python,energy%20for%20more%20important%20matters.)
-- [isort](https://pypi.org/project/isort/)
-- [bandit](https://pypi.org/project/bandit/)
-- [pytest](https://pypi.org/project/pytest/)
-
-To install the hooks:
-
-```
-~$ pre-commit install --install-hooks
-```
-
-For makefile in linux:
-
-```
-~$ sudo apt install build-essential
-```
-
-Set environment variable ```PYTHONPATH=src```.
+- [Head First Design Patterns](https://www.oreilly.com/library/view/head-first-design/0596007124/)
+- [Mastering Python Design Patterns, Second Edition](https://www.packtpub.com/product/mastering-python-design-patterns/9781783989324)
+- [Refactoring Guru](https://refactoring.guru/pt-br/design-patterns)

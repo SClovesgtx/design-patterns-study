@@ -41,20 +41,7 @@ help:
 	@echo
 	@echo "COMMANDS"
 	@echo
-
-	@echo "    code-format                  aplly black code formatter."
-	@echo "    cyclomatic-complexity  		metric for the complexity of our code."
-	@echo "    docs                         show the src modules documentation on the browser"
-	@echo "    maintainability-index  		analyze and compute our code Maintainability Index (easy to support and change)."
-	@echo "    profiler-report        		report that will track how long specific parts of our code run."
-	@echo "    run-api                		run API in localhost for development."
-	@echo "    stress-test            		run a stress test for entities endpoint."
 	@echo "    test                   		run all unit tests using pytest."
-	@echo "    coverage                     run coverage test."
-	@echo "    coverage-report              show coverage test results."
-	@echo "    coverage-report-detailed     create a detailed html page to show coverage test results."
-	@echo "    vulnerability-check    		look for security issues in the code."
-	@echo "    test-watch    		          re-runs unit tests when a file in your project changes."
 #################
 # User Commands # re-runs unit tests when a file in your project changes
 #################
