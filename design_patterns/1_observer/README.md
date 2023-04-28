@@ -4,6 +4,9 @@
 Please, read about observer [here](https://refactoring.guru/pt-br/design-patterns/observer).
 
 
+!<img src="./imgs/2.png" width="50%" height="50%" />
+
+
 ```mermaid
 classDiagram
 
@@ -15,7 +18,7 @@ classDiagram
         - subscribers: Subscriber[]
         - mainState
         + subscribe(s: Subscriber)
-        + subscribe(s: Subscriber)
+        + unsubscribe(s: Subscriber)
         + notifySubscriber()
         + mainBusinessLogic()
     }
@@ -80,5 +83,48 @@ Our job is to implement measurementsChanged()
 so that it updates the three displays for current
 conditions, weather stats, and forecast.
 
+## API Weather-O-Rama with Observer
 
+```mermaid
+classDiagram
+
+    WeatherData o-- Display
+    CurrentConditionsDisplay ..|> Display
+    StatisticsDisplay ..|> Display
+    ForeCastDisplay ..|> Display
+
+    class WeatherData{
+        - subscribers: list = Display
+        - temperature
+        - humidity
+        - pressure
+        + subscribe(s: Subscriber)
+        + unsubscribe(s: Subscriber)
+        + measurementsChanged()
+    }
+
+    class Display{
+        + update(temperature: float, humidity: float, pressure: float)
+    }
+
+    class CurrentConditionsDisplay{
+        + update(temperature: float, humidity: float, pressure: float)
+    }
+
+    class StatisticsDisplay{
+        + update(temperature: float, humidity: float, pressure: float)
+    }
+
+    class ForeCastDisplay{
+        + update(temperature: float, humidity: float, pressure: float)
+    }
+
+    <<interface>> Display
+```
+
+
+# Puch Line
+
+> Strive for loosely coupled designs
+between objects that interact.
 
