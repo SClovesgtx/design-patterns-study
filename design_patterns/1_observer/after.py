@@ -64,15 +64,30 @@ class WeatherData:
         for subscriber in self.__subscribers:
             subscriber.update(self.__temperature, self.__humidity, self.__pressure)
 
-    def set_temperature(self, temperature: float):
+    @property
+    def temperature(self) -> float:
+        return self.__temperature
+
+    @temperature.setter
+    def temperature(self, temperature: float):
         self.__temperature = temperature
         self.__notify()
 
-    def set_humidity(self, humidity: float):
+    @property
+    def humidity(self) -> float:
+        return self.__humidity
+
+    @humidity.setter
+    def humidity(self, humidity: float):
         self.__humidity = humidity
         self.__notify()
 
-    def set_pressure(self, pressure: float):
+    @property
+    def pressure(self) -> float:
+        return self.__pressure
+
+    @pressure.setter
+    def pressure(self, pressure: float):
         self.__pressure = pressure
         self.__notify()
 
@@ -88,10 +103,10 @@ if __name__ == "__main__":
     publisher.subscribe(statistics)
     publisher.subscribe(forecast)
 
-    publisher.set_temperature(22)
+    publisher.temperature = 22
 
-    publisher.set_humidity(100)
+    publisher.humidity = 100
 
     publisher.unsubscribe(statistics)
 
-    publisher.set_pressure(1000)
+    publisher.pressure = 1000
