@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
 
 
 class Display:
@@ -25,20 +26,31 @@ class ForeCastDisplay(Display):
         print("Thanks from ForeCastDisplay!")
 
 
+@dataclass
 class WeatherData:
-    __subscribers: list[Display] = []
-    __temperature: float
-    __humidity: float
-    __pressure: float
+    __subscribers: list[Display] = field(default_factory=list)
+    __temperature: float = 0
+    __humidity: float = 0
+    __pressure: float = 0
 
-    def __init__(self, temperature: float, humidity: float, pressure: float) -> None:
+    def __init__(
+        self,
+        temperature: float,
+        humidity: float,
+        pressure: float,
+        subscribers: list[Display] = [],
+    ) -> None:
         self.__temperature = temperature
         self.__humidity = humidity
         self.__pressure = pressure
+        self.__subscribers = subscribers
 
     def subscribe(self, subscriber: Display) -> None:
-        self.__subscribers.append((subscriber))
-        print("Successful subscription!")
+        if subscriber not in self.__subscribers:
+            self.__subscribers.append((subscriber))
+            print("Successful subscription!")
+        else:
+            print("This display object is already subscribed!")
 
     def unsubscribe(self, subscriber: Display) -> None:
         for i, sub in enumerate(self.__subscribers):
@@ -48,21 +60,21 @@ class WeatherData:
                 return
         print("Subscription not found!")
 
-    def ___measurementsChanged(self) -> None:
+    def __notify(self) -> None:
         for subscriber in self.__subscribers:
             subscriber.update(self.__temperature, self.__humidity, self.__pressure)
 
     def set_temperature(self, temperature: float):
         self.__temperature = temperature
-        self.___measurementsChanged()
+        self.__notify()
 
     def set_humidity(self, humidity: float):
         self.__humidity = humidity
-        self.___measurementsChanged()
+        self.__notify()
 
     def set_pressure(self, pressure: float):
         self.__pressure = pressure
-        self.___measurementsChanged()
+        self.__notify()
 
 
 if __name__ == "__main__":
