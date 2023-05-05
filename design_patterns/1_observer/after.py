@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 
 
-class Display:
+class Display(ABC):
     @abstractmethod
     def update(self, temperature: float, humidity: float, pressure: float) -> None:
         raise NotImplemented
